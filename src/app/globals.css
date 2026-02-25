@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-neutral-900 antialiased;
+    @apply dark:bg-neutral-950 dark:text-neutral-100;
+  }
+
+  ::selection {
+    @apply bg-blue-600/20 text-blue-900;
+    @apply dark:bg-blue-400/20 dark:text-blue-100;
+  }
+}

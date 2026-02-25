@@ -1,18 +1,96 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-base leading-relaxed text-neutral-700;
 }
 
-.markdown p,
+:global(.dark) .markdown {
+  @apply text-neutral-300;
+}
+
+.markdown p {
+  @apply my-5;
+}
+
 .markdown ul,
-.markdown ol,
+.markdown ol {
+  @apply my-5 pl-6;
+}
+
+.markdown ul {
+  @apply list-disc;
+}
+
+.markdown ol {
+  @apply list-decimal;
+}
+
+.markdown li {
+  @apply my-1;
+}
+
 .markdown blockquote {
-  @apply my-6;
+  @apply my-6 pl-4 border-l-2 border-neutral-300 text-neutral-500 italic;
+}
+
+:global(.dark) .markdown blockquote {
+  @apply border-neutral-600 text-neutral-400;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-2xl font-bold mt-12 mb-4 leading-snug tracking-tight text-neutral-900;
+}
+
+:global(.dark) .markdown h2 {
+  @apply text-neutral-100;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-xl font-semibold mt-8 mb-3 leading-snug tracking-tight text-neutral-900;
+}
+
+:global(.dark) .markdown h3 {
+  @apply text-neutral-100;
+}
+
+.markdown a {
+  @apply text-blue-600 underline underline-offset-2 decoration-blue-300 hover:decoration-blue-600 transition-colors;
+}
+
+:global(.dark) .markdown a {
+  @apply text-blue-400 decoration-blue-700 hover:decoration-blue-400;
+}
+
+.markdown code {
+  @apply text-sm font-mono px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800;
+}
+
+:global(.dark) .markdown code {
+  @apply bg-neutral-800 text-neutral-200;
+}
+
+.markdown pre {
+  @apply my-6 p-4 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-sm leading-relaxed;
+}
+
+:global(.dark) .markdown pre {
+  @apply bg-neutral-800/80;
+}
+
+.markdown pre code {
+  @apply p-0 bg-transparent text-inherit rounded-none;
+}
+
+.markdown strong {
+  @apply font-semibold text-neutral-900;
+}
+
+:global(.dark) .markdown strong {
+  @apply text-neutral-100;
+}
+
+.markdown hr {
+  @apply my-8 border-neutral-200;
+}
+
+:global(.dark) .markdown hr {
+  @apply border-neutral-700;
 }

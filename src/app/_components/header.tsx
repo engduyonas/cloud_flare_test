@@ -1,13 +1,18 @@
 import Link from "next/link";
+import { BLOG_NAME } from "@/lib/constants";
 
 const Header = () => {
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 flex items-center">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
+    <header className="flex items-center justify-between mt-8 mb-16">
+      <h2 className="text-xl font-bold tracking-tight">
+        <Link
+          href="/"
+          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+        >
+          {BLOG_NAME}
+        </Link>
+      </h2>
+    </header>
   );
 };
 
