@@ -11,6 +11,8 @@ type Props = {
   excerpt: string;
   author: Author;
   slug: string;
+  readingTime?: number;
+  tags?: string[];
 };
 
 export function PostPreview({
@@ -20,21 +22,46 @@ export function PostPreview({
   excerpt,
   author,
   slug,
+  readingTime,
+  tags,
 }: Props) {
   return (
-    <div>
-      <div className="mb-5">
+    <div className="group">
+      <div className="mb-4 rounded-xl overflow-hidden">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
+      <div className="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+        <DateFormatter dateString={date} />
+        {readingTime && (
+          <>
+            <span aria-hidden="true">&middot;</span>
+            <span>{readingTime} min read</span>
+          </>
+        )}
+      </div>
+      <h3 className="text-xl font-semibold mb-2 leading-snug">
+        <Link
+          href={`/posts/${slug}`}
+          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+        >
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-4">
-        <DateFormatter dateString={date} />
-      </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2 py-0.5 text-xs font-medium rounded-full bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 mb-3 line-clamp-3">
+        {excerpt}
+      </p>
       <Avatar name={author.name} picture={author.picture} />
     </div>
   );

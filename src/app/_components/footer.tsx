@@ -1,28 +1,33 @@
 import Container from "@/app/_components/container";
-import { EXAMPLE_PATH } from "@/lib/constants";
+import { BLOG_NAME } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200 dark:bg-slate-800">
+    <footer className="border-t border-neutral-200 dark:border-neutral-800">
       <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Statically Generated with Next.js.
-          </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
+        <div className="py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
+            {BLOG_NAME} &mdash; Built with{" "}
             <a
-              href="https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
+              href="https://nextjs.org/"
+              className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
             >
-              Read Documentation
-            </a>
+              Next.js
+            </a>{" "}
+            and deployed on{" "}
             <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-              className="mx-3 font-bold hover:underline"
+              href="https://workers.cloudflare.com/"
+              className="underline underline-offset-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
             >
-              View on GitHub
+              Cloudflare Workers
             </a>
-          </div>
+          </p>
+          <a
+            href="https://github.com/vercel/next.js/tree/canary/examples/blog-starter"
+            className="text-sm text-neutral-500 dark:text-neutral-400 underline underline-offset-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          >
+            Source on GitHub
+          </a>
         </div>
       </Container>
     </footer>

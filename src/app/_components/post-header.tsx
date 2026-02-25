@@ -9,25 +9,49 @@ type Props = {
   coverImage: string;
   date: string;
   author: Author;
+  readingTime?: number;
+  tags?: string[];
 };
 
-export function PostHeader({ title, coverImage, date, author }: Props) {
+export function PostHeader({
+  title,
+  coverImage,
+  date,
+  author,
+  readingTime,
+  tags,
+}: Props) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture} />
-      </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} src={coverImage} />
-      </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
+      <div className="max-w-3xl mx-auto mb-8">
+        <div className="flex flex-wrap items-center gap-4 mb-6">
           <Avatar name={author.name} picture={author.picture} />
+          <div className="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400">
+            <DateFormatter dateString={date} />
+            {readingTime && (
+              <>
+                <span aria-hidden="true">&middot;</span>
+                <span>{readingTime} min read</span>
+              </>
+            )}
+          </div>
         </div>
-        <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="mb-12 md:mb-16 rounded-2xl overflow-hidden">
+        <CoverImage title={title} src={coverImage} />
       </div>
     </>
   );

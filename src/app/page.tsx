@@ -6,9 +6,7 @@ import { getAllPosts } from "@/lib/api";
 
 export default function Index() {
   const allPosts = getAllPosts();
-
   const heroPost = allPosts[0];
-
   const morePosts = allPosts.slice(1);
 
   return (
@@ -22,6 +20,8 @@ export default function Index() {
           author={heroPost.author}
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
+          readingTime={heroPost.readingTime}
+          tags={heroPost.tags}
         />
         {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Container>
