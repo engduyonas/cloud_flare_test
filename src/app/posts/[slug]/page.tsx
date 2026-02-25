@@ -63,6 +63,8 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
   };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
 
